@@ -1,4 +1,4 @@
-package com.sk.protochat.security;
+package com.sk.chatapp.security;
 
 import javax.sql.DataSource;
 
@@ -18,29 +18,32 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter{
 
 	@Autowired
 	DataSource dataSource;
-	
+
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		
+
 		http
-			.csrf().disable()
-			.authorizeRequests()
-			.anyRequest().authenticated()
-			.and()
-			.formLogin();
+				.csrf().disable()
+				.authorizeRequests()
+				.antMatchers("/performLogin","/css/login.css","/js/login.js","/login.html").permitAll()
+				.anyRequest().authenticated()
+				.and()
+				.formLogin()
+				.loginPage("/login.html")
+				.loginProcessingUrl("/performLogin");
 	}
-	
+
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		
-		
+
+
 		auth.
-			jdbcAuthentication()
-			.dataSource(dataSource)
-			.usersByUsernameQuery("select username,password,enabled from Users where username = ?" )
-			.authoritiesByUsernameQuery("select username,'USER' from Users where username = ?");
+				jdbcAuthentication()
+				.dataSource(dataSource)
+				.usersByUsernameQuery("select username,password,enabled from Users where username = ?" )
+				.authoritiesByUsernameQuery("select username,'USER' from Users where username = ?");
 	}
-	
+
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return NoOpPasswordEncoder.getInstance();
