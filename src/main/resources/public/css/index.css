@@ -1,0 +1,338 @@
+
+:root {
+    --primary : #303f9f;
+    --primary-light : #7986cb;
+    --text-primary : #555;
+}
+
+*,*::after,*::before{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    color: var(--text-primary);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color : #fff;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.hide {
+	display : none !important;
+}
+
+main {
+    min-height: 100vh;
+}
+
+header {
+    background-color: var(--primary);
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.2rem;
+    color: #fff;
+    border-bottom: 1px solid #fff;
+}
+
+.user-details span{
+    margin-right : 0.5rem;
+}
+
+.container section {
+    position: relative;
+    overflow: hidden;
+}
+
+
+
+.contacts-wrapper h3,
+.messages-wrapper h3 {
+    background-color: var(--primary);
+    color : #fff;
+    padding: 1.2rem;
+    height: 65px;
+}
+
+
+.contacts-wrapper{
+    background-color: #ddd;
+}
+
+#contactList {
+    height: calc(100vh - 145px);
+    overflow: auto;
+}
+
+#contactList li {
+    padding: 1rem 1.2rem;
+    display: flex;
+    justify-content: space-between;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+}
+
+.active-messages{
+    display: block;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    background-color: var(--primary);
+    color: #fff;
+    text-align: center;
+    line-height: 30px;
+    font-size: 12px;
+}
+
+
+.messages-wrapper{
+    position: absolute;
+    left: 100vw;
+    width: 100vw;
+    top: 0;
+    display: none;
+    transition-property: left;
+    transition-duration: 1000ms;
+    transition-timing-function: ease-in-out;
+    background-color: #ddd;
+}
+
+.messages-wrapper.active {
+    display: block;
+    left: 0;
+}
+
+.message-container {
+    height: calc(100vh - 195px);
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+#messagePlaceholder {
+	min-height : 0.5rem;
+    flex-grow: 1;
+}
+
+#messageLog p{
+    padding: 0.5rem 1.2rem ;
+    border-radius: 4px;
+    margin: 1rem 1.5rem;
+    position: relative;
+    word-break : break-word;
+    width : max-content;
+    max-width : 60%;
+    line-height : 1.5;
+    z-index: 2;
+}
+
+#messageLog p.recieved {
+    background-color: var(--primary-light);
+    color: #fff;
+}
+
+#messageLog p.send {
+    background-color: #fff;
+    text-align: right;
+    margin-left : auto;
+}
+
+
+
+#messageLog p.recieved::before,
+#messageLog p.send::after{
+    content : "";
+    display: block;
+    height: 12px;
+    width: 12px; 
+    position: absolute;
+    transform: rotate(45deg) translateY(-50%);
+    top: 50%;
+    transform-origin: top;
+    background-color: inherit;
+    z-index: 1;
+}
+
+#messageLog p.send::after{
+    right: -6px;
+}
+
+#messageLog p.recieved::before {
+    left: -6px;
+}
+
+#messageLog p span{
+    position : absolute;
+    font-size : 12px;
+    bottom : 4px;
+    color: var(--text-primary);
+}
+
+#messageLog p.send span{
+    left : -60px;
+}
+
+#messageLog p.recieved span{
+    right : -60px;
+}
+
+#messageLog .date {
+    display: block;
+    margin: 0.5rem auto;
+    width: max-content;
+    font-size: 12px;
+    padding: 0.5rem;
+    background: #f0f8ff;
+    border-radius: 4px;
+}
+
+.messages-wrapper h3 i {
+    margin-right: 10px;
+}
+
+form[name=messageForm]{
+    height: 50px;
+    display: flex;
+    align-items: center;
+    background-color: var(--primary);
+}
+
+form[name=messageForm] input{
+    flex-grow: 1;
+    margin: 0 8px;
+    padding: 8px 12px;
+    font-size: 16px;
+    border: 1px solid #fff;
+    outline: none;
+}
+
+form[name=messageForm] button{
+    margin: 0 8px;
+    padding: 8px 36px;
+    background-color: #fff;
+    border: 1px solid #fff;
+    outline: none;
+    color: var(--primary);
+}
+
+form[name=messageForm] button i{
+    font-size: 20px;
+}
+
+@media(min-width : 768px){
+
+    .container section{
+        display: flex;
+    }
+
+    .contacts-wrapper {
+        flex-basis : 50%;
+    }
+
+    .messages-wrapper{
+        position: static;
+        flex-basis : 50%;
+        left: unset;
+        width: initial;
+        top: unset;
+        display: block;
+        transition: none;
+    }
+
+    .messages-wrapper h3 i {
+        display: none;
+    }
+
+    #contactName {
+        margin-left: 0;
+    }
+
+    main{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /* background-color: #999; */
+
+    }
+
+    .container {
+        width: 90%;
+        height: 90vh;
+        box-shadow: 0px 10px 15px rgba(0,0,0,0.4);
+    }
+
+    #contactList {
+        height: calc(90vh - 145px);
+    }
+
+    .message-container {
+        height: calc(90vh - 195px);
+    }
+    
+    #messageLog p {
+    	max-width : calc(90vw  * 0.3)
+    }
+    
+    .no-contact{
+        display: flex;
+        height : 100%;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+        text-align: center;
+        flex-direction: column;
+        color: var(--primary);
+        background-color: #fff;
+        line-height: 1.5;
+        border-left: 1px solid #ddd;
+    }
+
+    .no-contact i{
+        font-size: 4rem;
+        margin-bottom: 2rem;
+    }
+
+    .contact-selected {
+        border-left: 1px solid #fff;
+    }
+}
+
+@media(min-width : 900px){
+
+    .container {
+        width: 80%;
+        height: 80vh;
+        box-shadow: 0px 10px 15px rgba(0,0,0,0.4);
+    }
+    
+    #contactList {
+        height: calc(80vh - 145px);
+    }
+
+    .message-container {
+        height: calc(80vh - 195px);
+    }
+
+    #messageLog p {
+    	max-width : calc(80vw  * 0.3)
+    }
+    
+    .contacts-wrapper {
+        flex-basis : 40%;
+    }
+
+    .messages-wrapper{
+        flex-basis : 60%;
+    }
+
+}
+

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css">
+<!--     <link rel="stylesheet" href="node_modules/@fortawesome/fontawesome-free/css/all.css"> -->
+    <link rel="stylesheet"  href="css/index.css">
+    <title>ChatApp</title>
+</head>
+<body>
+    <main>
+        <div class="container" >
+            <header>
+                <h1>ChatApp</h1>
+                <div class="user-details" >
+                    <span id="userName">Username</span>
+                    <a href="/logout"  >
+                        <i class="fas fa-external-link-square-alt"></i>
+                    </a>
+                </div>
+            </header>
+            <section >
+                <div class="contacts-wrapper" >
+                    <h3>Contacts</h3>
+	                    <ul id="contactList">
+	                        
+	                    </ul>
+	                </div>
+	                <div class="messages-wrapper" >
+	                	<div class="no-contact">
+	                        <i class="far fa-paper-plane"></i>
+	                        <h2>What's wating for, Pick a contact to start conversation</h2>
+	                    </div>
+	                    <div class="contact-selected hide">
+	                    	<h3 >
+	                        <a id="backButton">
+	                            <i class="fas fa-arrow-left"></i>
+	                        </a>
+	                        <span id="contactName" ></span>
+	                    </h3>
+	                    <div class="message-container">
+	                        <div id="messagePlaceholder"></div>
+	                        <div id="messageLog" >
+	                           
+	                        </div>
+	                    </div>
+	                    <form name="messageForm">
+	                        <input type="text" name="message" placeholder="Enter messsage" >
+	                        <button type="submit" >
+	                            <i class="far fa-paper-plane"></i>
+	                        </button>
+	                    </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    <script src="js/index.js"></script>
+</body>
+</html>
