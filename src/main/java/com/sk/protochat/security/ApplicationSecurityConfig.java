@@ -1,4 +1,4 @@
-package com.sk.chatapp.security;
+package com.sk.protochat.security;
 
 import javax.sql.DataSource;
 
